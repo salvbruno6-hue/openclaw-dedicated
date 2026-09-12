@@ -1,0 +1,34 @@
+{
+  "name": "openclaw-dedicated",
+  "version": "1.0.0",
+  "description": "Repositório dedicado para OpenClaw - integração e desenvolvimento",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm install && npm run install:modules",
+    "install:modules": "for dir in openclaw-core clawhub lobster integrations/*/; do cd $dir && npm install && cd ../..; done",
+    "dev": "npm run dev:core",
+    "dev:core": "cd openclaw-core && npm run dev",
+    "test": "npm run test:all",
+    "test:all": "for dir in openclaw-core clawhub lobster integrations/*/; do cd $dir && npm test && cd ../..; done",
+    "build": "npm run build:all",
+    "build:all": "for dir in openclaw-core clawhub lobster integrations/*/; do cd $dir && npm run build && cd ../..; done",
+    "governance:check": "openclaw status --governance"
+  },
+  "keywords": [
+    "openclaw",
+    "ai",
+    "agent",
+    "automation",
+    "integration"
+  ],
+  "author": "salvbruno6-hue",
+  "license": "MIT",
+  "workspaces": [
+    "openclaw-core",
+    "clawhub",
+    "lobster",
+    "integrations/*",
+    "platform-clis/*",
+    "platform-support/*"
+  ]
+}
